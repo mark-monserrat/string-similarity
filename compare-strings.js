@@ -42,22 +42,24 @@ function compareTwoStrings(first, second) {
 function findBestMatch(mainString, targetStrings) {
 	if (!areArgsValid(mainString, targetStrings)) throw new Error('Bad arguments: First argument should be a string, second should be an array of strings');
 	
-	const ratings = [];
+	// const ratings = [];
+	const match = [];
 	let bestMatchIndex = 0;
 
 	for (let i = 0; i < targetStrings.length; i++) {
 		const currentTargetString = targetStrings[i];
-		const currentRating = compareTwoStrings(mainString, currentTargetString)
-		ratings.push({target: currentTargetString, rating: currentRating})
+		const currentRating = compareTwoStrings(mainString, currentTargetString);
+		// ratings.push({target: currentTargetString, rating: currentRating})
 		if (currentRating >= 0.75) {
 			bestMatchIndex = i
+			match.push({target: currentTargetString, rating: currentRating});
 		}
 	}
 	
 	
-	const bestMatch = ratings[bestMatchIndex]
+	// const bestMatch = ratings[bestMatchIndex]
 	
-	return { ratings, bestMatch, bestMatchIndex };
+	return match;
 }
 
 function areArgsValid(mainString, targetStrings) {
