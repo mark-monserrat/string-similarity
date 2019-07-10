@@ -49,7 +49,7 @@ function findBestMatch(mainString, targetStrings) {
 		const currentTargetString = targetStrings[i];
 		const currentRating = compareTwoStrings(mainString, currentTargetString)
 		ratings.push({target: currentTargetString, rating: currentRating})
-		if (currentRating > ratings[bestMatchIndex].rating) {
+		if (currentRating >= 0.75) {
 			bestMatchIndex = i
 		}
 	}
